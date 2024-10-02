@@ -1,5 +1,5 @@
 # Retrieval Chain : load the document from website and split the document.
-# load to wordembedding model.
+# load to wordembedding model and vertorstores.
 
 from dotenv import load_dotenv
 load_dotenv()
