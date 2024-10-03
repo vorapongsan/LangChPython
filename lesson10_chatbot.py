@@ -1,4 +1,7 @@
-# Chabot: Connect with web and answer question as chatbot via chat history.  
+# Chabot: Connect with web and answer question as chatbot via chat history.
+# Create chat history and process chat.
+# Add the retrieval chain to the chatbot.
+
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -13,6 +16,8 @@ from langchain.chains import create_retrieval_chain
 
 from langchain_core.messages import HumanMessage, AIMessage
 from langchain_core.prompts import MessagesPlaceholder
+from langchain.chains.history_aware_retriever import create_history_aware_retriever
+
 
 
 
@@ -52,12 +57,24 @@ def create_chain(vectorStore):
     chain = create_stuff_documents_chain(
         llm =llm,
         prompt = prompt
-        )
+    )
+
+    retriever_prompt = ChatPromptTemplate.from_messages([
+        MessagesPlaceholder(variable_name = "chat_history"),
+        ("system", "Retrieve documents based on the user question"),
+        ("human", "{input}"),
+    ])
     
     retriever = vectorStore.as_retriever(search_kwargs={'k': 3})
+    history_aware_retriever = create_history_aware_retriever(
+        llm = llm,
+        retriever = retriever,
+        prompt = retriever_prompt
+    )
 
     retrieval_chain =create_retrieval_chain(
-        retriever,
+        # retriever,
+        history_aware_retriever,
         chain
     )
     return retrieval_chain
@@ -75,17 +92,15 @@ if __name__ == "__main__":
     vectorStore = create_db(docs)
     chain = create_chain(vectorStore)
 
-    chat_history = [
-        HumanMessage(content="hello"),
-        AIMessage(content="Hi, how can I help you?"),
-        HumanMessage(content="My name is AKE")
-    ]
+    chat_history = []
 
     while True:
         user_input = input("You:")
         if user_input == "exit":
             break
         response = process_chat(chain, user_input, chat_history)
+        chat_history.append(HumanMessage(content=user_input))
+        chat_history.append(AIMessage(content=response))
         print(response)
 
 

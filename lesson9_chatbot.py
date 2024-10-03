@@ -1,4 +1,6 @@
-# Chabot: Connect with web and answer question as chatbot via chat history.  
+# Chabot: Connect with web and answer question as chatbot via chat history.
+# Create chat history and process chat.
+#   
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -75,17 +77,15 @@ if __name__ == "__main__":
     vectorStore = create_db(docs)
     chain = create_chain(vectorStore)
 
-    chat_history = [
-        HumanMessage(content="hello"),
-        AIMessage(content="Hi, how can I help you?"),
-        HumanMessage(content="My name is AKE")
-    ]
+    chat_history = []
 
     while True:
         user_input = input("You:")
         if user_input == "exit":
             break
         response = process_chat(chain, user_input, chat_history)
+        chat_history.append(HumanMessage(content=user_input))
+        chat_history.append(AIMessage(content=response))
         print(response)
 
 
