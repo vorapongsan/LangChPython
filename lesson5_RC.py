@@ -1,4 +1,5 @@
 # Retrieval Chain : load the document from website.
+# 1. Create a document from website
 
 from dotenv import load_dotenv
 load_dotenv()

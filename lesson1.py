@@ -1,4 +1,10 @@
 # Chat Model 
+# 1. Show simple example of using the ChatGroq model
+# 2. Show simple example of using the ChatOllama model
+# 3. Show simple example of using the ChatGoogleGenerativeAI model
+# 4. Show invoking the model with a prompt
+# 5. Show Batch invoking the model with a prompt
+# 6. Show Streaming invoking the model with a prompt
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -28,15 +34,15 @@ googleLLM = ChatGoogleGenerativeAI(
     max_retries=2,
     # other params...
 )
-# response = llm.invoke("Write a poem about AI")
-# print(response)
-# print(response.content)
+response = llm.invoke("Write a poem about AI")
+print(response)
+print(response.content)
 
 # response = llm.batch(["How are you","Write a poem about AI"])
 # print(response[1].content)
 
 # response = llm.stream("Write a poem about AI")
-response = googleLLM.stream("Write a poem about AI")
-for chunk in response:
-    print(chunk.content, end="", flush=True)
+# response = googleLLM.stream("Write a poem about AI")
+# for chunk in response:
+#     print(chunk.content, end="", flush=True)
 

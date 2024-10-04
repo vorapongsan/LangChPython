@@ -1,4 +1,8 @@
 # Retrieval Chain : load the document from text.
+# 1. Create a document from text
+# 2. Create and invoke the document with the chain
+# 3. Create and invoke the document with create_stuff_documents_chain
+
 
 from dotenv import load_dotenv
 load_dotenv()

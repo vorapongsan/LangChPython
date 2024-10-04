@@ -1,4 +1,8 @@
 # Output Parser
+# 1. response without output parser
+# 2. response with str output parser
+# 3. response with list output parser
+# 4. response with json output parser
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -17,8 +21,6 @@ llm = ChatGroq(
 
 
 # create prompt template
-
-
 def get_response():
     prompt = ChatPromptTemplate.from_messages(
         [
@@ -85,7 +87,6 @@ def get_response_json_output_parser():
         "phrase": "Mary is 25 years old",
         "format_instructions": parser.get_format_instructions()
     })
-
 
 
 
