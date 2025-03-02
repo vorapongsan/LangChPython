@@ -1,6 +1,7 @@
 # Retrieval Chain : load the document from website and split the document.
 # load to wordembedding model and vertorstores.
 # set the word-embedding model to OllamaEmbeddings
+# set the word-embedding model to TogetherEmbeddings
 # retrieve the answer from the vector-store.
 
 
@@ -13,11 +14,11 @@ from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain_community.document_loaders import WebBaseLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 #from langchain_openai import OpenAIEmbeddings
-from langchain_community.vectorstores.faiss import FAISS
 #from langchain_ollama import OllamaEmbeddings
 from langchain_together import TogetherEmbeddings
+from langchain_community.vectorstores.faiss import FAISS
 
-embeddings = TogetherEmbeddings(
+embedding = TogetherEmbeddings(
     model="togethercomputer/m2-bert-80M-8k-retrieval",
 )
 
@@ -43,7 +44,7 @@ def  get_document_from_web(url):
 
 def create_db(docs):
     #embedding = OpenAIEmbeddings()
-    vectorStore = FAISS.from_documents(docs, embedding = embeddings) 
+    vectorStore = FAISS.from_documents(docs, embedding = embedding) 
     return vectorStore
 
 docs = get_document_from_web("https://python.langchain.com/v0.1/docs/expression_language/")
