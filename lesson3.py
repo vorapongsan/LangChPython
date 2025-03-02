@@ -14,8 +14,8 @@ from pydantic.v1 import BaseModel, Field
 
 # Initialize the ChatGroq object
 llm = ChatGroq(
-    #model="llama-3.2-3b-preview",
-    model ="llama3-groq-8b-8192-tool-use-preview",
+   #model="llama-3.2-3b-preview",
+    model ="llama-3.3-70b-versatile",
     temperature=0,
 )
 
