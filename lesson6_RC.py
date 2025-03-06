@@ -2,7 +2,7 @@
 # load to wordembedding model and vertorstores.
 # set the word-embedding model to OllamaEmbeddings
 # set the word-embedding model to TogetherEmbeddings
-# retrieve the answer from the vector-store.
+# not yet retrieve the answer from the vector-store. 
 
 
 from dotenv import load_dotenv

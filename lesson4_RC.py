@@ -24,7 +24,7 @@ llm = ChatGroq(
 )
 
 prompt = ChatPromptTemplate.from_template(""" 
-    Answer the user's question:
+    Answer the user's question.
     Context :  {context}
     User Question : {input}
 """)
