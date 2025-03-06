@@ -30,35 +30,35 @@ print(resp.content)
 
 
 ##===============================
-## create prompt template
-# prompt = ChatPromptTemplate.from_messages(
-#     [
-#         ("system", "Write a poem about of the given topic"),
-#         ("user", '{subject}')
-#     ]
-# )
+# create prompt template
+prompt = ChatPromptTemplate.from_messages(
+    [
+        ("system", "Write a poem about of the given topic"),
+        ("user", '{subject}')
+    ]
+)
 
-# # create LLM chain
-# chain = prompt | llm
+# create LLM chain
+chain = prompt | llm
 
 
-# # invoke the chain
-# response = chain.invoke({'subject':"AI"})
-# print(response.content)
+# invoke the chain
+response = chain.invoke({'subject':"AI"})
+print(response.content)
 
 # ##=================================
-# # create list of synonyms  
-# prompt2 = ChatPromptTemplate.from_messages(
-#     [
-#         ("system", "list the synonyms of the given word"),
-#         ("user", '{subject}')
-#     ]
-# )
+# create list of synonyms  
+prompt2 = ChatPromptTemplate.from_messages(
+    [
+        ("system", "list the synonyms of the given word"),
+        ("user", '{subject}')
+    ]
+)
 
-# # create LLM chain
-# chain = prompt2 | llm
+# create LLM chain
+chain = prompt2 | llm
 
 
-# # invoke the chain
-# response = chain.invoke({'subject':"AI"})
-# print(response.content)
+# invoke the chain
+response = chain.invoke({'subject':"AI"})
+print(response.content)

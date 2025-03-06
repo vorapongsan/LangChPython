@@ -24,7 +24,7 @@ llm = ChatGroq(
 def get_response():
     prompt = ChatPromptTemplate.from_messages(
         [
-            ("system", "Generate a list of 10 synonyms for the following word. Return the results as a comma seperated list."),
+            ("system", "Generate a list of 10 synonyms for the following word. Return the results as a comma separated list."),
             ("user", '{subject}')
         ]
     )
@@ -34,10 +34,14 @@ def get_response():
     response = chain.invoke({'subject':"AI"})
     return response.content
 
+
+print(get_response())
+
+
 def get_response_str_output_parser():
     prompt = ChatPromptTemplate.from_messages(
         [
-            ("system", "Generate a list of 10 synonyms for the following word. Return the results as a comma seperated list."),
+            ("system", "Generate a list of 10 synonyms for the following word. Return the results as a comma separated list."),
             ("user", '{subject}')
         ]
     )
@@ -49,13 +53,13 @@ def get_response_str_output_parser():
     # invoke the chain
     response = chain.invoke({'subject':"AI"})
     return response
-
+print(get_response_str_output_parser())
 
 #====== with list output parser =======
 def get_response_list_output_parser():
     prompt = ChatPromptTemplate.from_messages(
         [
-            ("system", "Generate a list of 10 synonyms for the following word. Return the results as a comma seperated list."),
+            ("system", "Generate a list of 10 synonyms for the following word. Return the results as a comma separated list."),
             ("user", '{subject}')
         ]
     )
@@ -66,6 +70,7 @@ def get_response_list_output_parser():
     # invoke the chain
     response = chain.invoke({'subject':"AI"})
     return response
+print(get_response_list_output_parser())
 
 #====== with json output parser =======
 def get_response_json_output_parser():
@@ -87,10 +92,4 @@ def get_response_json_output_parser():
         "phrase": "Mary is 25 years old",
         "format_instructions": parser.get_format_instructions()
     })
-
-
-
-print(get_response())
-print(get_response_str_output_parser())
-print(get_response_list_output_parser())
 print(get_response_json_output_parser())
