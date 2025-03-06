@@ -3,6 +3,7 @@
 # 2. Create a LLM chain
 # 3. Create a prompt template from messages
 # 4. Introduce the list problem
+
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -16,8 +17,6 @@ llm = ChatGroq(
 )
 
 
-
-
 #=================================
 # Create a prompt template
 prompt = ChatPromptTemplate.from_template("Write a poem about {subject}")
@@ -25,11 +24,9 @@ prompt = ChatPromptTemplate.from_template("Write a poem about {subject}")
 # Create LLM Chain
 
 chain =  prompt | llm
-
 resp = chain.invoke({'subject':"AI"})
 
 print(resp.content)
-
 
 
 ##===============================
