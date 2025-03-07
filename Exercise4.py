@@ -28,7 +28,7 @@ prompt = ChatPromptTemplate.from_messages([
 ])
 
 # Step 3: Add StrOutputParser to ensure output is always a string
-output_parser = CommaSeparatedListOutputParser()
+output_parser = StrOutputParser()
 
 # Step 4: Create LLM Chain with Output Parser
 chain = prompt | llm | output_parser
