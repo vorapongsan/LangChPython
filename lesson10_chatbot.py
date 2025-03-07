@@ -1,4 +1,4 @@
-# Chabot: Connect with web and answer question as chatbot via chat history.
+# Chatbot: Connect with web and answer question as chatbot via chat history.
 # Create chat history and process chat.
 # Add the retrieval chain to the chatbot.
 

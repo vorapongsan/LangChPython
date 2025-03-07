@@ -1,4 +1,4 @@
-# Chabot: Connect with web and answer question as chatbot via chat history.  
+# Chatbot: Connect with web and answer question as chatbot via chat history.  
 from dotenv import load_dotenv
 load_dotenv()
 
