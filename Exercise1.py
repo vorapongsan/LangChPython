@@ -7,3 +7,29 @@
 # 4. Invoke the chain with "Innovation" as the topic.
 # 5. Print the generated response.
 
+from dotenv import load_dotenv
+load_dotenv()
+
+from langchain_groq import ChatGroq
+from langchain_core.prompts import ChatPromptTemplate
+
+# Step 1: Initialize the ChatGroq LLM
+llm = ChatGroq(
+    model="llama-3.3-70b-versatile",
+    temperature=0
+)
+
+# Step 2: Create a Prompt Template using from_messages
+prompt = ChatPromptTemplate.from_messages([
+    ("system", "Generate a short motivational quote about a given topic."),
+    ("user", "{topic}")
+])
+
+# Step 3: Create the LLM Chain
+chain = prompt | llm
+
+# Step 4: Invoke the Chain with the topic "Innovation"
+response = chain.invoke({"topic": "Innovation"})
+
+# Step 5: Print the Generated Response
+print(response.content)
